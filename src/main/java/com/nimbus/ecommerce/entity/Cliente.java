@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,6 +40,7 @@ public class Cliente {
 	private String genero;
 	
 	@NotBlank(message = "O campo 'email' é obrigatório")
+	@Email(message = "Deve ser um email válido")
 	private String email;
 	
 	@NotBlank(message = "O campo 'telefone' é obrigatório")
@@ -49,6 +51,5 @@ public class Cliente {
 	
 	@NotBlank(message = "O campo 'senha' é obrigatório")
 	private String senha;
-	
 	
 }
