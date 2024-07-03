@@ -1,6 +1,9 @@
 package com.nimbus.ecommerce.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import java.util.Optional;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +19,24 @@ import jakarta.validation.Valid;
 public class ClienteController {
 
     private ClienteService clienteService;
-
+    
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
 
     // Rotas Públicas
     @PostMapping("/cadastro")
-    public Cliente cadastro(@Valid @RequestBody Cliente cliente) {
-        // verificar se nenhum dado está em branco
-        // criptografar senha, telefone
+    public ResponseEntity<Cliente> cadastro(@Valid @RequestBody Cliente cliente) {
         // salvar e retornar objeto cliente
-        return clienteService.create(cliente);
+        return ResponseEntity.ok(clienteService.create(cliente));
     }
 
+    // public ResponseEntity<Boolean> login(
+    //     @RequestBody String login,
+    //     @RequestBody String password
+    // ) {
+    //     Optional<Cliente> optCliente = 
+
+    //     return null;
+    // }
 }
